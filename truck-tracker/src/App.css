@@ -1,0 +1,16 @@
+body{
+  background-image: url('./images/Background.png')
+}
+
+.rating-system{
+  display:flex;
+}
+
+.form-styling{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 700px;
+  height: 300px;
+}

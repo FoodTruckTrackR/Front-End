@@ -36,7 +36,7 @@ const LoginForm = () => {
     }
 
     return (
-        <FormStyle onSubmit={userSubmit}>
+        <FormStyle className="form-styling" onSubmit={userSubmit}>
           <label>
               Username: 
               <input 
