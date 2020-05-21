@@ -1,5 +1,14 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import * as yup from 'yup';
+import styled from 'styled-components';
+
+const FormStyle = styled.form`
+    border: 2px solid silver;
+    display: flex;
+    flex-direction: column;
+    margin-top: 25%;
+`
 
 const LoginForm = () => {
 
@@ -27,7 +36,7 @@ const LoginForm = () => {
     }
 
     return (
-        <form onSubmit={userSubmit}>
+        <FormStyle onSubmit={userSubmit}>
           <label>
               Username: 
               <input 
@@ -49,7 +58,7 @@ const LoginForm = () => {
             />    
         </label>
         <button type='submit'>Login</button>  
-        </form>
+        </FormStyle>
     )
 }
 
