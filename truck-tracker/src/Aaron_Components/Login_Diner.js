@@ -7,12 +7,20 @@ const FormStyle = styled.form`
     border: 2px solid black;
     display: flex;
     flex-direction: column;
-    margin-top: 25%;
+    margin-top: 10%;
     width: 50%;
     margin-left: 25%;
-    background-color: darkorange;
+    background-color: rgb(255, 213, 0, 0.8);
     color: aliceblue;
 `
+const ErrorStyle = styled.p`
+    color: red;
+    font-size: 100%;
+`
+const userSchema = yup.object().shape({
+    username: yup.string().required('Please input your username'),
+    password: yup.string().required('Please input your valid password')
+})
 
 const LoginDiner = () => {
 
@@ -22,7 +30,31 @@ const LoginDiner = () => {
         userType: 'diner'
     })
 
+    const [userError, setUserError] = useState({
+        username: '',
+        password: ''
+    })
+
+    const validateUser = event => {
+        yup.reach(userSchema, event.target.name)
+        .validate(event.target.value)
+        .then(valid => {
+            setUserError({
+                ...userError,
+                [event.target.name]: ''
+            });
+        })
+        .catch(error => {
+            setUserError({
+                ...userError,
+                [event.target.name]: error.errors[0]
+            });
+        });
+    }
+
     const userChange = event => {
+        event.persist();
+        validateUser(event);
         setUser({
             ...user,
             [event.target.name]: event.target.value
@@ -42,7 +74,8 @@ const LoginDiner = () => {
 
     return (
         <FormStyle className="form-styling" onSubmit={userSubmit}>
-          <label>
+            <h5>Diner Login</h5>
+            <label>
               Username: 
               <input 
                 type='text'
@@ -51,6 +84,10 @@ const LoginDiner = () => {
                 value={user.username}
                 onChange={userChange}
               />
+              {userError.username.length > 0 ? (
+                  <ErrorStyle>{userError.username}</ErrorStyle>
+              ) : null
+            }
         </label>
         <label>
             Password: 
@@ -61,6 +98,10 @@ const LoginDiner = () => {
                 value={user.password}
                 onChange={userChange}
             />    
+            {userError.password.length > 0 ? (
+                  <ErrorStyle>{userError.password}</ErrorStyle>
+              ) : null
+            }
         </label>
         <button type='submit'>Login</button>  
         </FormStyle>
