@@ -2,6 +2,12 @@ body{
   background-image: url('./images/Background.png')
 }
 
+.Links{
+  color: #51240f;
+  text-decoration: underline;
+  margin-right: 2%;
+}
+
 .rating-system{
   display:flex;
 }
