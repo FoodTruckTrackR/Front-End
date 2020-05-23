@@ -1,13 +1,22 @@
 import React, { useState } from "react";
 import NavBar from "./NavBar";
+import axios from "axios";
 
-const Register = () => {
+const Register = (props) => {
   const [user, setUser] = useState({ username: "", password: "" });
   const [operator, setOperator] = useState({
     username: "",
     password: "",
-    truckName: "",
   });
+
+  // const operatorPost = () => {
+  //   axios
+  //     .post("localhost:5000/operators/register", operator)
+  //     .then((res) => alert(res.data))
+  //     .catch((err) => console.log(err));
+  //   props.history.push("/login");
+  // };
+
   const dinerFormAppear = () => {
     let dinerForm = document.querySelector(".form-styling-Stephanie");
     if (dinerForm.style.display === "flex") {
@@ -63,7 +72,9 @@ const Register = () => {
                   </td>
                 </tr>
                 <tr>
-                  <td>{/* <p>Password:</p> */}</td>
+                  <td>
+                    <p>Password:</p>
+                  </td>
                   <td>
                     <input
                       type="password"
@@ -115,21 +126,12 @@ const Register = () => {
                     />
                   </td>
                 </tr>
-                <tr>
-                  <td>Food Truck Name:</td>
-                  <td>
-                    <input
-                      type="text"
-                      placeholder="Enter Truck Name Here"
-                      onChange={(e) => {
-                        setOperator({ ...operator, truckName: e.target.value });
-                      }}
-                    />
-                  </td>
-                </tr>
+                <tr></tr>
                 <tr>
                   <td>
-                    <button className="button-styling">Register</button>
+                    <button className="button-styling">
+                      Register
+                    </button>
                   </td>
                 </tr>
               </tbody>

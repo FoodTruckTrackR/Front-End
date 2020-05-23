@@ -31,7 +31,7 @@ const NavComp = () => {
             <StyleAnch>Home</StyleAnch>
             <StyleAnch>About</StyleAnch>
             <StyleAnch>Profile</StyleAnch>
-            {loggedIn}
+            {loggedIn()}
         </NavStyle>
     )
 }
