@@ -103,7 +103,7 @@ const LoginDiner = () => {
               ) : null
             }
         </label>
-        <button type='submit'>Login</button>  
+        <button type='submit'>Login</button>
         </FormStyle>
     )
 }
