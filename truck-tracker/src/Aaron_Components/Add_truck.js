@@ -35,7 +35,6 @@ const AddTruckComp = () => {
     const menuSubmit = event => {
         event.preventDefault();
         setTruckState(truckState.menu.push(menuItem));
-        console.log(menuItem);
         setMenuItem({
         itemName: '',
         itemDescription: '',
