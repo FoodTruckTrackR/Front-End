@@ -11,7 +11,7 @@ const FormStyle = styled.form`
     width: 50%;
     margin-left: 25%;
     background-color: rgb(254, 104, 0, 0.8);
-    color: aliceblue;
+    color: #51240f;
 `
 
 const ErrorStyle = styled.p`
