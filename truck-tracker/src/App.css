@@ -108,6 +108,12 @@ td{
   padding: 5px;
 }
 
+.flex-buttons{
+  display: flex;
+  justify-content: space-between;
+  width: 150px;
+}
+
 @media only screen and (max-width: 900px){
 
   .container{
