@@ -12,7 +12,7 @@ const FormStyle = styled.form`
   width: 50%;
   margin-left: 25%;
   background-color: rgba(222, 100, 89, 0.8);
-  color: aliceblue;
+  color: #51240F;
 `;
 const ErrorStyle = styled.p`
   color: red;

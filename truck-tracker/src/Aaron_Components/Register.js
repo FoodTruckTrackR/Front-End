@@ -9,13 +9,27 @@ const Register = (props) => {
     password: "",
   });
 
-  // const operatorPost = () => {
-  //   axios
-  //     .post("localhost:5000/operators/register", operator)
-  //     .then((res) => alert(res.data))
-  //     .catch((err) => console.log(err));
-  //   props.history.push("/login");
-  // };
+  const operatorPost = (e) => {
+    e.preventDefault();
+    axios
+      .post(
+        "https://git.heroku.com/foodtruck-traker.git/operatorsRouter/register",
+        operator
+      )
+      .then((res) => console.log(res.data))
+      .catch((err) => console.log(err));
+  };
+
+  const dinerPost = (e) => {
+    e.preventDefault();
+    axios
+      .post(
+        "https://git.heroku.com/foodtruck-traker.git/dinersRouter/register",
+        user
+      )
+      .then((res) => console.log(res.data))
+      .catch((err) => console.log(err));
+  };
 
   const dinerFormAppear = () => {
     let dinerForm = document.querySelector(".form-styling-Stephanie");
@@ -87,7 +101,7 @@ const Register = (props) => {
                 </tr>
                 <tr>
                   <td>
-                    <button className="button-styling">Register</button>
+                    <button onClick={dinerPost} className="button-styling">Register</button>
                   </td>
                 </tr>
               </tbody>
@@ -129,7 +143,7 @@ const Register = (props) => {
                 <tr></tr>
                 <tr>
                   <td>
-                    <button className="button-styling">
+                    <button onClick={operatorPost} className="button-styling">
                       Register
                     </button>
                   </td>

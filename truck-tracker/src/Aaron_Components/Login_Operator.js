@@ -12,7 +12,7 @@ const FormStyle = styled.form`
   width: 50%;
   margin-left: 25%;
   background-color: rgb(255, 213, 0, 0.8);
-  color: aliceblue;
+  color: #51240F;
 `;
 
 const ErrorStyle = styled.p`
@@ -28,8 +28,7 @@ const userSchema = yup.object().shape({
 const LoginOperator = () => {
   const [user, setUser] = useState({
     username: "",
-    password: "",
-    userType: "operator",
+    password: ""
   });
 
   const [userError, setUserError] = useState({
