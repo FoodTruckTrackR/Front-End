@@ -7,11 +7,6 @@ import LoginOperator from './Aaron_Components/Login_Operator';
 import NavComp from './Aaron_Components/NavBar';
 import CustomerSurvey from './Aaron_Components/CustomerSurvey';
 import './App.css';
-import axios from 'axios';
-
-axios.get('https://foodtruck-trackr.herokuapp.com/diners')
-.then(response => console.log(response.data))
-.catch(error => console.log(error))
 
 function App() {
   return (

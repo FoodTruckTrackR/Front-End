@@ -65,9 +65,6 @@ const LoginOperator = () => {
 
     const userSubmit = event => {
         event.preventDefault();
-        axios.post('https://reqres.in/api/users', user)
-        .then(response => console.log(response.data))
-        .catch(error => console.log(error))
         setUser({
             username: '',
             password: ''
