@@ -12,7 +12,7 @@ const FormStyle = styled.form`
   width: 50%;
   margin-left: 25%;
   background-color: rgb(255, 213, 0, 0.8);
-  color: #51240F;
+  color: #51240f;
 `;
 
 const ErrorStyle = styled.p`
@@ -28,7 +28,7 @@ const userSchema = yup.object().shape({
 const LoginOperator = () => {
   const [user, setUser] = useState({
     username: "",
-    password: ""
+    password: "",
   });
 
   const [userError, setUserError] = useState({
@@ -66,11 +66,10 @@ const LoginOperator = () => {
   const userSubmit = (event) => {
     event.preventDefault();
     axios
-      .post(
-        "https://foodtruck-trackr.herokuapp.com/operators/login",
-        user
+      .post("https://foodtruck-trackr.herokuapp.com/operators/login", user)
+      .then(
+        res => console.log(res.data)
       )
-      .then((response) => console.log(response.data))
       .catch((error) => console.log(error));
     setUser({
       username: "",
