@@ -32,9 +32,21 @@ const AddTruckComp = () => {
         })
     }
 
+    const truckSubmit = event => {
+        event.preventDefault();
+        setTruckState({
+        truckName: '',
+        cuisineType: '',
+        customerRatings: [],
+        customerRatingAvg: '',
+        menu: []
+        })
+    }
+
     const menuSubmit = event => {
         event.preventDefault();
         setTruckState(truckState.menu.push(menuItem));
+        console.log(menuItem);
         setMenuItem({
         itemName: '',
         itemDescription: '',
@@ -48,7 +60,7 @@ const AddTruckComp = () => {
 
     return(
         <div>
-            <form>
+            <form onSubmit={truckSubmit}>
             <label>
                 What's the name of the truck? 
                 <input
