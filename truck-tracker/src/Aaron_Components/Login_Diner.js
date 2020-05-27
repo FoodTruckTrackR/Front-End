@@ -63,7 +63,11 @@ const LoginDiner = () => {
 
     const userSubmit = event => {
         event.preventDefault();
-        axios.post(`https://foodtruck-trackr.herokuapp.com/diners/`)
+        axios.get(`https://foodtruck-trackr.herokuapp.com/diners/`, {
+            params: {
+                username: user.username
+            }
+        })
         .then(response => console.log(response.data))
         .catch(error => console.log(error))
         setUser({
