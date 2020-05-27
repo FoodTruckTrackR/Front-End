@@ -67,7 +67,7 @@ const LoginOperator = () => {
     event.preventDefault();
     axios
       .post(
-        "https://git.heroku.com/foodtruck-traker.git/operatorsRouter/login",
+        "https://foodtruck-trackr.herokuapp.com/operators/login",
         user
       )
       .then((response) => console.log(response.data))

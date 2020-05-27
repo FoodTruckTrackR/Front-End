@@ -13,7 +13,7 @@ const Register = (props) => {
     e.preventDefault();
     axios
       .post(
-        "https://git.heroku.com/foodtruck-traker.git/operatorsRouter/register",
+        "https://foodtruck-trackr.herokuapp.com/operators/register",
         operator
       )
       .then((res) => console.log(res.data))
@@ -24,7 +24,7 @@ const Register = (props) => {
     e.preventDefault();
     axios
       .post(
-        "https://git.heroku.com/foodtruck-traker.git/dinersRouter/register",
+        "https://foodtruck-trackr.herokuapp.com/diners/register",
         user
       )
       .then((res) => console.log(res.data))
