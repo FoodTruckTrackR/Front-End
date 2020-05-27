@@ -16,8 +16,12 @@ const Register = (props) => {
         "https://foodtruck-trackr.herokuapp.com/operators/register",
         operator
       )
-      .then((res) => console.log(res.data))
-      .catch((err) => console.log(err));
+      .then((res) =>{if(res.data === true){
+        alert("You have successfully Registered")
+      }
+      else{
+      }})
+      .catch((err) => console.log("error", err));
   };
 
   const dinerPost = (e) => {

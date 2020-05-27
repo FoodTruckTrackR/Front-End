@@ -1,6 +1,6 @@
-const GET_TRUCK_INFO = "GET_TRUCK_INFO";
-const TRUCK_LOADING = "TRUCK_LOADING";
-const GET_TRUCK_ERROR = "GET_TRUCK_ERROR";
+export const GET_TRUCK_INFO = "GET_TRUCK_INFO";
+export const TRUCK_LOADING = "TRUCK_LOADING";
+export const GET_TRUCK_ERROR = "GET_TRUCK_ERROR";
 
 const initialValue = {
     operatorId: "",

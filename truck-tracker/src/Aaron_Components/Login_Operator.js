@@ -3,6 +3,8 @@ import axios from "axios";
 import * as yup from "yup";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import {connect} from 'react-redux';
+import { GET_TRUCK_INFO, GET_TRUCK_ERROR} from './Reducer';
 
 const FormStyle = styled.form`
   border: 2px solid black;
@@ -63,14 +65,18 @@ const LoginOperator = () => {
     });
   };
 
-  const userSubmit = (event) => {
+  const userSubmit = (event, dispatch) => {
     event.preventDefault();
     axios
       .post("https://foodtruck-trackr.herokuapp.com/operators/login", user)
       .then(
-        res => console.log(res.data)
-      )
-      .catch((error) => console.log(error));
+        res =>{
+        localStorage.setItem("token", res.data.token)
+        dispatch({type:GET_TRUCK_INFO, payload: res.data.id})
+        })
+      .catch((error) =>{
+        dispatch({type:GET_TRUCK_ERROR, payload: error})
+      })
     setUser({
       username: "",
       password: "",
@@ -117,5 +123,6 @@ const LoginOperator = () => {
     </FormStyle>
   );
 };
+
 
 export default LoginOperator;
