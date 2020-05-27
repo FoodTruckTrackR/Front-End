@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from './logo.svg';
+import AddTruckComp from './Aaron_Components/Add_truck';
 import LoginForm from './Aaron_Components/Login';
 import Register from './Aaron_Components/Register';
 import NavComp from './Aaron_Components/NavBar';
@@ -10,6 +10,7 @@ function App() {
   return (
     <div className="App">
       <NavComp />
+      <AddTruckComp />
       <LoginForm />
       <CustomerSurvey />
     </div>
