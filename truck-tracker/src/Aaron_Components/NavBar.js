@@ -16,12 +16,22 @@ const StyleAnch = styled.a`
 `
 
 const NavComp = () => {
+
+    const loggedIn = () =>{
+        if(localStorage.getItem("token") === null || localStorage.getItem("token") === undefined){
+            return;
+        }else{
+            return(
+            <StyleAnch>Sign out</StyleAnch>
+            )
+        }
+    }
     return(
         <NavStyle>
             <StyleAnch>Home</StyleAnch>
             <StyleAnch>About</StyleAnch>
             <StyleAnch>Profile</StyleAnch>
-            <StyleAnch>Sign out</StyleAnch>
+            {loggedIn()}
         </NavStyle>
     )
 }
