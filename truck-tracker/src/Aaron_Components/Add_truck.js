@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import AddMenuComp from './Add_menu';
+import { Route, Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const StyledDiv = styled.div`
@@ -6,9 +8,9 @@ const StyledDiv = styled.div`
     border: 2px solid #51240f;
     border-radius: 20%;
     padding: 3%;
-    width: 80%;
+    width: 50%;
     height: 40vh;
-    margin: 3% 3% 3% 10%;
+    margin: 3% 3% 3% 20%;
     color: #51240f;
     background-color: rgba(222, 100, 89, 0.8);
 `
@@ -104,41 +106,8 @@ const AddTruckComp = () => {
                     />
                 </label>
                 <button type='submit'>Submit truck</button>
-            </StyledForm>
-            <hr />
-            <StyledForm onSubmit={menuSubmit}>
-                <h5>Add a menu item</h5>
-                <label>
-                    Menu item 
-                    <input
-                    type='text'
-                    name='itemName'
-                    id='itemName'
-                    value={menuItem.itemName}
-                    onChange={menuChange}
-                    />
-                </label>
-                <label>
-                    Dish description 
-                    <input
-                    type='text'
-                    name='itemDescription'
-                    id='itemDescription'
-                    value={menuItem.itemDescription}
-                    onChange={menuChange}
-                    />
-                </label>
-                <label>
-                    Item price 
-                    <input
-                    type='text'
-                    name='itemPrice'
-                    id='itemPrice'
-                    value={menuItem.itemPrice}
-                    onChange={menuChange}
-                    />
-                </label>
-                <button type='submit'>Submit item</button>
+                <Link to='/menu'>Add an item to your truck menu here!</Link>
+                <Route path='/menu' render={(props) => <AddMenuComp {...props} menuChange={menuChange} menuSubmit={menuSubmit} itemName={menuItem.itemName} itemDescription={menuItem.itemDescription} itemPrice={menuItem.itemDescription} />} />
             </StyledForm>
         </StyledDiv>
     )
