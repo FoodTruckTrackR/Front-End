@@ -25,8 +25,6 @@ const LoginForm = () => {
                 <Link className='Links' to='/operatorlogin'>Truck operator</Link>
             </LinkDiv>
         </LoginDiv>
-            <Route path='/dinerlogin' component={LoginDiner} />
-            <Route path='/operatorlogin' component={LoginOperator} />
         </div>
     )
 }

@@ -5,15 +5,16 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 const FormStyle = styled.form`
-  border: 2px solid black;
-  display: flex;
-  flex-direction: column;
-  margin-top: 10%;
-  width: 50%;
-  margin-left: 25%;
-  background-color: rgb(255, 213, 0, 0.8);
-  color: aliceblue;
-`;
+    border: 2px solid black;
+    display: flex;
+    flex-direction: column;
+    margin-top: 10%;
+    width: 50%;
+    margin-left: 25%;
+    background-color: rgb(254, 104, 0, 0.8);
+    color: #51240f;
+`
+
 
 const ErrorStyle = styled.p`
   color: red;
@@ -64,20 +65,14 @@ const LoginOperator = () => {
     });
   };
 
-  const userSubmit = (event) => {
-    event.preventDefault();
-    axios
-      .post(
-        "https://git.heroku.com/foodtruck-traker.git/operatorsRouter/login",
-        user
-      )
-      .then((response) => console.log(response.data))
-      .catch((error) => console.log(error));
-    setUser({
-      username: "",
-      password: "",
-    });
-  };
+    const userSubmit = event => {
+        event.preventDefault();
+        setUser({
+            username: '',
+            password: ''
+        })
+    }
+
 
   return (
     <FormStyle className="form-styling" onSubmit={userSubmit}>
