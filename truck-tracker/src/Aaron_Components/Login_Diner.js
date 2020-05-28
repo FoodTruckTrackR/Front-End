@@ -5,15 +5,15 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 const FormStyle = styled.form`
-  border: 2px solid black;
-  display: flex;
-  flex-direction: column;
-  margin-top: 10%;
-  width: 50%;
-  margin-left: 25%;
-  background-color: rgba(222, 100, 89, 0.8);
-  color: #51240F;
-`;
+    border: 2px solid black;
+    display: flex;
+    flex-direction: column;
+    margin-top: 10%;
+    width: 50%;
+    margin-left: 25%;
+    background-color: rgba(222, 100, 89, 0.8);
+    color: #51240f;
+`
 const ErrorStyle = styled.p`
   color: red;
   font-size: 100%;

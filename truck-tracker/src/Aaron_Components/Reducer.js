@@ -3,7 +3,7 @@ export const TRUCK_LOADING = "TRUCK_LOADING";
 export const GET_TRUCK_ERROR = "GET_TRUCK_ERROR";
 
 const initialValue = {
-    operatorId: "",
+    id: "",
     isFetching: false,
     error: ""
 }
@@ -14,19 +14,19 @@ export const Reducer = (state = initialValue, action) =>{
         case GET_TRUCK_INFO:
             return{
                 ...state, 
-                operatorId: action.payload,
+                id: [action.payload],
                 isFetching: false
             }
         case TRUCK_LOADING:
             return{
                 ...state,
-                operatorId: action.payload,
+                id: [action.payload],
                 isFetching: true
             }
         case GET_TRUCK_ERROR:
             return{
                 ...state,
-                error: action.payload,
+                error: [action.payload],
                 isFetching: false
             }
         default:

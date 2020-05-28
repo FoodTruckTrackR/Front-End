@@ -4,18 +4,19 @@ import * as yup from "yup";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import {connect} from 'react-redux';
-import { GET_TRUCK_INFO, GET_TRUCK_ERROR} from './Reducer';
+import {actionLogin} from './Action';
 
 const FormStyle = styled.form`
-  border: 2px solid black;
-  display: flex;
-  flex-direction: column;
-  margin-top: 10%;
-  width: 50%;
-  margin-left: 25%;
-  background-color: rgb(255, 213, 0, 0.8);
-  color: #51240f;
-`;
+    border: 2px solid black;
+    display: flex;
+    flex-direction: column;
+    margin-top: 10%;
+    width: 50%;
+    margin-left: 25%;
+    background-color: rgb(254, 104, 0, 0.8);
+    color: #51240f;
+`
+
 
 const ErrorStyle = styled.p`
   color: red;
@@ -65,23 +66,15 @@ const LoginOperator = () => {
     });
   };
 
-  const userSubmit = (event, dispatch) => {
+  const userSubmit = (event) => {
     event.preventDefault();
-    axios
-      .post("https://foodtruck-trackr.herokuapp.com/operators/login", user)
-      .then(
-        res =>{
-        localStorage.setItem("token", res.data.token)
-        dispatch({type:GET_TRUCK_INFO, payload: res.data.id})
-        })
-      .catch((error) =>{
-        dispatch({type:GET_TRUCK_ERROR, payload: error})
-      })
+    actionLogin(user);
     setUser({
       username: "",
       password: "",
     });
   };
+
 
   return (
     <FormStyle className="form-styling" onSubmit={userSubmit}>
@@ -113,7 +106,7 @@ const LoginOperator = () => {
         ) : null}
       </label>
       <div className="flex-buttons">
-        <button className="button-styling" type="submit">
+        <button className="button-styling" onClick={userSubmit}>
           Login
         </button>
         <Link path to="/register">
