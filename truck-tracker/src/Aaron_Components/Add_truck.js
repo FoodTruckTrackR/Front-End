@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import {connect} from 'react-redux';
 import {actionLogin} from './Action'
-import axios from 'axios';
+import axiosWithAuth from './axiosWithAuth';
 
 const StyledDiv = styled.div`
     display: flex;
@@ -27,11 +27,9 @@ const StyledForm = styled.form`
 const AddTruckComp = (props) => {
     console.log("These", props)
     const [truckState, setTruckState] = useState({
-        truckImage: '',
+        truckName: '',
+        imageOfTruck: '',
         cuisineType: '',
-        customerRatings: [],
-        customerRatingAvg: '',
-        menu: []
     })
 
     const [menuItem, setMenuItem] = useState({
@@ -39,8 +37,8 @@ const AddTruckComp = (props) => {
         itemDescription: '',
         itemPhotos: [],
         itemPrice: '',
-        customerRatings: [],
-        customerRatingAvg: ''
+        ratings: [],
+        ratingAvg: ''
     })
 
     const truckChange = event => {
@@ -59,14 +57,14 @@ const AddTruckComp = (props) => {
 
     const truckSubmit = event => {
         event.preventDefault();
-        axios
-        .post(`https://foodtruck-trackr.herokuapp.com/${props.id}/trucks`, truckState)
+        axiosWithAuth()
+        .post(`https://foodtruck-trackr.herokuapp.com/operators/${props.id}/trucks`, truckState)
+        .then(res => console.log(res.data))
+        .catch(err => console.log(err))
         setTruckState({
-        truckImage: '',
-        cuisineType: '',
-        customerRatings: [],
-        customerRatingAvg: '',
-        menu: []
+        truckName: '',
+        imageOfTruck: '',
+        cuisineType: ''
         })
     }
 
@@ -77,7 +75,7 @@ const AddTruckComp = (props) => {
         setMenuItem({
         itemName: '',
         itemDescription: '',
-        itemPhotos: [],
+        itemPhoto: '',
         itemPrice: '',
         customerRatings: [],
         customerRatingAvg: ''
@@ -90,12 +88,22 @@ const AddTruckComp = (props) => {
             <StyledForm onSubmit={truckSubmit}>
                 <h5>Add a Truck</h5>
                 <label>
+                    What is the truck name?
+                    <input
+                    name='truckName'
+                    type='text'
+                    id='truckName'
+                    value={truckState.truckName}
+                    onChange={truckChange}
+                    />
+                </label>
+                <label>
                     What is the truck image URL?
                     <input
-                    name='truckImage'
+                    name='imageOfTruck'
                     type='text'
-                    id='truckImage'
-                    value={truckState.truckImage}
+                    id='imageOfTruck'
+                    value={truckState.imageOfTruck}
                     onChange={truckChange}
                     />
                 </label>
@@ -150,7 +158,6 @@ const AddTruckComp = (props) => {
     )
 }
 const mapStateToProps = state =>{
-    console.log("This", state)
     return{
         error: state.error,
         id: state.id,

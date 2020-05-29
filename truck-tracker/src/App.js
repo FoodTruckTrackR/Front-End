@@ -8,16 +8,17 @@ import NavComp from './Aaron_Components/NavBar';
 import CustomerSurvey from './Aaron_Components/CustomerSurvey';
 import Register from './Aaron_Components/Register';
 import './App.css';
+import ProfileOperator from './Aaron_Components/ProfileOperator';
 
 function App() {
   return (
     <div className="App">
       <NavComp />
-      <AddTruckComp />
       <Route exact path='/' component={LoginForm} />
       <Route path='/dinerlogin' component={LoginDiner} />
-      <Route path='/operatorlogin' component={LoginOperator} />
-      <Route path='/register' component={Register} />
+      <Route path='/operatorlogin' render={props => <LoginOperator {...props} />} />
+      <Route path='/register' render={props =>  <Register {...props}/>}/>
+      <Route path='/operator/profile' component={ProfileOperator} />
       <CustomerSurvey />
     </div>
   );

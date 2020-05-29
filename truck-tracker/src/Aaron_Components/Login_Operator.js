@@ -3,7 +3,7 @@ import axios from "axios";
 import * as yup from "yup";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import {connect} from 'react-redux';
+import {connect, useDispatch} from 'react-redux';
 import {actionLogin} from './Action';
 
 const FormStyle = styled.form`
@@ -28,7 +28,7 @@ const userSchema = yup.object().shape({
   password: yup.string().required("Please input your valid password"),
 });
 
-const LoginOperator = () => {
+const LoginOperator = (props) => {
   const [user, setUser] = useState({
     username: "",
     password: "",
@@ -65,10 +65,15 @@ const LoginOperator = () => {
       [event.target.name]: event.target.value,
     });
   };
-
-  const userSubmit = (event) => {
-    event.preventDefault();
-    actionLogin(user);
+  const dispatch = useDispatch();
+  const userSubmit = (e) => {
+    e.preventDefault();
+    actionLogin(user)(dispatch);
+    if(localStorage.getItem("token") != null || localStorage.getItem("token") != undefined){
+    props.history.push('/operator/profile')
+    }else{
+      return;
+    }
     setUser({
       username: "",
       password: "",

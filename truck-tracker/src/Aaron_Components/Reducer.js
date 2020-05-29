@@ -14,19 +14,19 @@ export const Reducer = (state = initialValue, action) =>{
         case GET_TRUCK_INFO:
             return{
                 ...state, 
-                id: [action.payload],
+                id: action.payload,
                 isFetching: false
             }
         case TRUCK_LOADING:
             return{
                 ...state,
-                id: [action.payload],
+                id: action.payload,
                 isFetching: true
             }
         case GET_TRUCK_ERROR:
             return{
                 ...state,
-                error: [action.payload],
+                error: action.payload,
                 isFetching: false
             }
         default:
