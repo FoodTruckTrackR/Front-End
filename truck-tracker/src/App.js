@@ -14,6 +14,7 @@ function App() {
   return (
     <div className="App">
       <NavComp />
+      <AddTruckComp />
       <Route exact path='/' component={LoginForm} />
       <Route path='/dinerlogin' component={LoginDiner} />
       <Route path='/operatorlogin' render={props => <LoginOperator {...props} />} />
