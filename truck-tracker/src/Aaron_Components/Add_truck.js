@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import {connect} from 'react-redux';
+import {actionLogin} from './Action'
+import axiosWithAuth from './axiosWithAuth';
 
 const StyledDiv = styled.div`
     display: flex;
@@ -21,13 +24,12 @@ const StyledForm = styled.form`
     margin-right: 8%;
 `
 
-const AddTruckComp = () => {
+const AddTruckComp = (props) => {
+    console.log("These", props)
     const [truckState, setTruckState] = useState({
         truckName: '',
+        imageOfTruck: '',
         cuisineType: '',
-        customerRatings: [],
-        customerRatingAvg: '',
-        menu: []
     })
 
     const [menuItem, setMenuItem] = useState({
@@ -35,8 +37,8 @@ const AddTruckComp = () => {
         itemDescription: '',
         itemPhotos: [],
         itemPrice: '',
-        customerRatings: [],
-        customerRatingAvg: ''
+        ratings: [],
+        ratingAvg: ''
     })
 
     const truckChange = event => {
@@ -55,12 +57,14 @@ const AddTruckComp = () => {
 
     const truckSubmit = event => {
         event.preventDefault();
+        axiosWithAuth()
+        .post(`https://foodtruck-trackr.herokuapp.com/operators/${props.id}/trucks`, truckState)
+        .then(res => console.log(res.data))
+        .catch(err => console.log(err))
         setTruckState({
         truckName: '',
-        cuisineType: '',
-        customerRatings: [],
-        customerRatingAvg: '',
-        menu: []
+        imageOfTruck: '',
+        cuisineType: ''
         })
     }
 
@@ -71,7 +75,7 @@ const AddTruckComp = () => {
         setMenuItem({
         itemName: '',
         itemDescription: '',
-        itemPhotos: [],
+        itemPhoto: '',
         itemPrice: '',
         customerRatings: [],
         customerRatingAvg: ''
@@ -84,12 +88,22 @@ const AddTruckComp = () => {
             <StyledForm onSubmit={truckSubmit}>
                 <h5>Add a Truck</h5>
                 <label>
-                    What's the name of the truck? 
+                    What is the truck name?
                     <input
                     name='truckName'
                     type='text'
                     id='truckName'
                     value={truckState.truckName}
+                    onChange={truckChange}
+                    />
+                </label>
+                <label>
+                    What is the truck image URL?
+                    <input
+                    name='imageOfTruck'
+                    type='text'
+                    id='imageOfTruck'
+                    value={truckState.imageOfTruck}
                     onChange={truckChange}
                     />
                 </label>
@@ -143,5 +157,12 @@ const AddTruckComp = () => {
         </StyledDiv>
     )
 }
+const mapStateToProps = state =>{
+    return{
+        error: state.error,
+        id: state.id,
+        isFetching: state.isFetching
+    }
+}
 
-export default AddTruckComp;
+export default connect(mapStateToProps, {actionLogin})(AddTruckComp);

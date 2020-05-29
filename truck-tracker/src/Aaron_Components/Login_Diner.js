@@ -62,13 +62,20 @@ const LoginDiner = () => {
     });
   };
 
-    const userSubmit = event => {
-        event.preventDefault();
-        setUser({
-            username: '',
-            password: ''
-        })
-    }
+  const userSubmit = (event) => {
+    event.preventDefault();
+    axios
+      .post(
+        "https://foodtruck-trackr.herokuapp.com/diners/login",
+        user
+      )
+      .then((response) => console.log(response.data))
+      .catch((error) => console.log(error));
+    setUser({
+      username: "",
+      password: "",
+    });
+  };
 
   return (
     <FormStyle className="form-styling" onSubmit={userSubmit}>

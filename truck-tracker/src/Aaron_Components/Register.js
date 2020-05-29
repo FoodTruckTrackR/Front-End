@@ -9,13 +9,42 @@ const Register = (props) => {
     password: "",
   });
 
-  // const operatorPost = () => {
-  //   axios
-  //     .post("localhost:5000/operators/register", operator)
-  //     .then((res) => alert(res.data))
-  //     .catch((err) => console.log(err));
-  //   props.history.push("/login");
-  // };
+  const operatorPost = (e) => {
+    e.preventDefault();
+    axios
+      .post(
+        "https://foodtruck-trackr.herokuapp.com/operators/register",
+        operator
+      )
+      .then((res) => {
+        console.log(res)
+        if(res.statusText === 'Created'){
+          alert("You have successfully Registered")
+          props.history.push('/');
+          }else{
+            alert("Registration unsuccessfull")
+          }
+        })
+      .catch((err) => console.log("error", err));
+  }
+
+  const dinerPost = (e) => {
+    e.preventDefault();
+    axios
+      .post(
+        "https://foodtruck-trackr.herokuapp.com/diners/register",
+        user
+      )
+      .then((res) =>{
+        if(res.statusText === 'Created'){
+        alert("You have successfully Registered")
+        props.history.push('/');
+        }else{
+          alert("Registration unsuccessfull")
+        }
+      })
+      .catch((err) => console.log(err));
+  };
 
   const dinerFormAppear = () => {
     let dinerForm = document.querySelector(".form-styling-Stephanie");
@@ -87,7 +116,7 @@ const Register = (props) => {
                 </tr>
                 <tr>
                   <td>
-                    <button className="button-styling">Register</button>
+                    <button onClick={dinerPost} className="button-styling">Register</button>
                   </td>
                 </tr>
               </tbody>
@@ -129,7 +158,7 @@ const Register = (props) => {
                 <tr></tr>
                 <tr>
                   <td>
-                    <button className="button-styling">
+                    <button onClick={operatorPost} className="button-styling">
                       Register
                     </button>
                   </td>

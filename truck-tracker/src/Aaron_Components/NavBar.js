@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import {Link} from 'react-router-dom';
 
 const NavStyle = styled.nav`
     background-color: #51240f;
@@ -17,21 +18,35 @@ const StyleAnch = styled.a`
 
 const NavComp = () => {
 
+    const signOut = () =>{
+        localStorage.clear();
+    }
     const loggedIn = () =>{
         if(localStorage.getItem("token") === null || localStorage.getItem("token") === undefined){
             return;
         }else{
             return(
-            <StyleAnch>Sign out</StyleAnch>
+            <div onClick={signOut}>Sign out</div>
+            )
+        }
+    } 
+
+    const loggedInAsOperator = () =>{
+        if(localStorage.getItem("trucks") === null || localStorage.getItem("trucks") === undefined){
+            return;
+        }else{
+            return(
+                <Link path to='/operator/profile'>Profile</Link>
             )
         }
     }
+
     return(
         <NavStyle>
-            <StyleAnch>Home</StyleAnch>
+            <StyleAnch><Link path to="/">Log in</Link></StyleAnch>
             <StyleAnch>About</StyleAnch>
-            <StyleAnch>Profile</StyleAnch>
             {loggedIn()}
+            {loggedInAsOperator()}
         </NavStyle>
     )
 }

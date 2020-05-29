@@ -3,6 +3,8 @@ import axios from "axios";
 import * as yup from "yup";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import {connect, useDispatch} from 'react-redux';
+import {actionLogin} from './Action';
 
 const FormStyle = styled.form`
     border: 2px solid black;
@@ -26,11 +28,10 @@ const userSchema = yup.object().shape({
   password: yup.string().required("Please input your valid password"),
 });
 
-const LoginOperator = () => {
+const LoginOperator = (props) => {
   const [user, setUser] = useState({
     username: "",
     password: "",
-    userType: "operator",
   });
 
   const [userError, setUserError] = useState({
@@ -64,14 +65,20 @@ const LoginOperator = () => {
       [event.target.name]: event.target.value,
     });
   };
-
-    const userSubmit = event => {
-        event.preventDefault();
-        setUser({
-            username: '',
-            password: ''
-        })
+  const dispatch = useDispatch();
+  const userSubmit = (e) => {
+    e.preventDefault();
+    actionLogin(user)(dispatch);
+    if(localStorage.getItem("token") != null || localStorage.getItem("token") != undefined){
+    props.history.push('/operator/profile')
+    }else{
+      return;
     }
+    setUser({
+      username: "",
+      password: "",
+    });
+  };
 
 
   return (
@@ -104,7 +111,7 @@ const LoginOperator = () => {
         ) : null}
       </label>
       <div className="flex-buttons">
-        <button className="button-styling" type="submit">
+        <button className="button-styling" onClick={userSubmit}>
           Login
         </button>
         <Link path to="/register">
@@ -114,5 +121,6 @@ const LoginOperator = () => {
     </FormStyle>
   );
 };
+
 
 export default LoginOperator;

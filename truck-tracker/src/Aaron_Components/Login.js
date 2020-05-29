@@ -2,6 +2,7 @@ import React from 'react';
 import LoginDiner from './Login_Diner';
 import LoginOperator from './Login_Operator'
 import { Link, Route } from 'react-router-dom';
+import Register from './Register';
 import styled from 'styled-components';
 import '../App.css'
 
