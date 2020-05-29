@@ -9,13 +9,23 @@ const ProfileOperator = (props) => {
         useEffect(() =>{
             axiosWithAuth()
                 .get(`https://foodtruck-trackr.herokuapp.com/operators/${props.id}/trucks`)
-                .then(res => console.log("this", res.data))
+                .then(res => setTrucks(res))
                 .catch(err => console.log(err))
 
         },[setTrucks])
     return(
         <div>
             <Add_truck />
+            {
+                trucks.map(item => {
+                    return(
+                    <div>
+                    <div>{item.truckName}</div>
+                    <div>{item.imageOfTruck}</div>
+                    </div>
+                )
+                })
+            }
         </div>
     )
 }
