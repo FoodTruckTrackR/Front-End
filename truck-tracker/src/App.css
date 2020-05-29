@@ -20,3 +20,134 @@ body{
   width: 700px;
   height: 300px;
 }
+
+.rating-system{
+  display:flex;
+}
+.container{
+  width: 100%;
+  display: flex;
+}
+
+.form-container{
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  margin-top: 20px;
+}
+.form-styling-Stephanie{
+  display: none;
+  margin: auto;
+  margin-top: 50px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  width: 500px;
+  background-color: rgb(255, 213, 0, 0.8);
+  border: 1px solid #51240F;
+  color: #51240F;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 10px;
+}
+
+.form-styling-two{
+  display: none;
+  margin: auto;
+  margin-top: 50px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  width: 500px;
+  background-color: rgb(255, 213, 0, 0.8);
+  border: 1px solid #51240F;
+  color: #51240F;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 10px;
+}
+
+.registration-buttons{
+display: flex;
+flex-direction: column;
+width: 250px;
+height: 100vh;
+background-color:rgb(254, 104, 0, 0.8);
+}
+
+.registration-button-styling{
+  width: 200px;
+  height: 200px;
+  margin: 20px;
+  background-color: rgb(255, 213, 0, 0.8);
+  border: 1px solid #51240F;
+  border-radius: 50%;
+  color: #51240F;
+  font-weight: bold;
+  font-size: 30px;
+}
+
+.button-styling{
+  background-color: #51240F;
+  color: white;
+  border-radius: 50%;
+  padding: 6px;
+}
+.star{
+  padding: 5px;
+}
+
+.star2{
+  display:none;
+  padding: 5px;
+}
+
+td{
+  padding: 5px;
+}
+
+.flex-buttons{
+  display: flex;
+  justify-content: space-between;
+  width: 150px;
+}
+
+@media only screen and (max-width: 900px){
+
+  .container{
+    flex-direction: column;
+  }
+  .registration-buttons{
+    width: 100vw;
+    padding: 0;
+    margin: 0;
+    height: auto;
+    background-color: none;
+  }
+  .registration-button-styling{
+  width: 100%;
+  border-radius: 0;
+  padding: 0;
+  margin: 0;
+  border: none;
+  height: auto;
+  }
+
+  .registration-button-styling:hover{
+    background-color: white;
+  }
+  .form-styling{
+    width: 100vw;
+    border: none;
+    margin: auto;
+  }
+
+  .form-styling-two{
+    width: 100vw;
+    border: none;
+    margin: auto;
+    margin-top: 10px;
+  }
+}
