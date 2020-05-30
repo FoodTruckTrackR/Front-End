@@ -13,7 +13,7 @@ const ProfileOperator = (props) => {
                 .then(res => setTrucks(res.data))
                 .catch(err => console.log(err))
 
-        },[setTrucks])
+        },[props.id])
 
         const onDelete = (item) => {
             axiosWithAuth()
@@ -21,18 +21,52 @@ const ProfileOperator = (props) => {
                 .then(res => setTrucks(res.data))
                 .catch(err => console.log(err))
         }
+        const onUpdate = (item) => {
+            const containingDiv = document.querySelector('.update');
+            containingDiv.textContent = '';
+            const truckName = document.createElement('input');
+            truckName.type = 'text';
+            truckName.placeholder = 'Enter Truck Name';
+            const imageOfTruck = document.createElement('input');
+            imageOfTruck.type='text';
+            imageOfTruck.placeholder = 'Enter Image URL'; 
+            const cuisineType = document.createElement('input');
+            cuisineType.type='text';
+            cuisineType.placeholder = 'Enter Cuisine Type';
+            const buttonForSubmit = document.createElement('button');
+            buttonForSubmit.textContent = 'Update';
+            containingDiv.appendChild(truckName);
+            containingDiv.appendChild(imageOfTruck);
+            containingDiv.appendChild(cuisineType);
+            containingDiv.appendChild(buttonForSubmit);
+
+            const newTruck ={
+                truckName: truckName.value,
+                imageOfTruck: imageOfTruck.value,
+                cuisineType: cuisineType.value
+            }
+
+            const onEdit = () =>{
+                axiosWithAuth()
+                .put(`https://foodtruck-tracker.herokuapp.com/operators/${props.id}/trucks/${item.id}`, newTruck)
+                .then(res => console.log(res))
+                .catch(err => console.log(err))
+            }
+
+            buttonForSubmit.addEventListener('click', onEdit)
+        }
     return(
         <div>
             <Add_truck />
             {
                 trucks.map(item => {
                     return(
-                    <div>
+                    <div className="update">
                     <div>{item.truckName}</div>
                     <div>{item.imageOfTruck}</div>
                     <div>
                     <button onClick={onDelete(item)}>Delete</button>
-                    <button>Update</button>
+                    <button onClick={onUpdate}>Update</button>
                     </div>
                     </div>
                 )

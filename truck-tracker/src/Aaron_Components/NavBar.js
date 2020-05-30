@@ -20,6 +20,7 @@ const NavComp = () => {
 
     const signOut = () =>{
         localStorage.clear();
+        window.location.assign('/');
     }
     const loggedIn = () =>{
         if(localStorage.getItem("token") === null || localStorage.getItem("token") === undefined){
