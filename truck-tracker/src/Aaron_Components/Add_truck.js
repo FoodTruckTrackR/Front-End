@@ -85,7 +85,7 @@ const AddTruckComp = (props) => {
 
     return(
         <StyledDiv>
-            <StyledForm onSubmit={truckSubmit}>
+            <StyledForm>
                 <h5>Add a Truck</h5>
                 <label>
                     What is the truck name?
@@ -117,7 +117,7 @@ const AddTruckComp = (props) => {
                     onChange={truckChange}
                     />
                 </label>
-                <button type='submit'>Submit truck</button>
+                <button onClick={truckSubmit}>Submit truck</button>
             </StyledForm>
             <hr />
             <StyledForm onSubmit={menuSubmit}>
