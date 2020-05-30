@@ -27,6 +27,7 @@ const ProfileOperator = (props) => {
             containingDiv.textContent = '';
             const truckName = document.createElement('input');
             truckName.type = 'text';
+            truckName.id = item.id;
             truckName.placeholder = 'Enter Truck Name';
             const imageOfTruck = document.createElement('input');
             imageOfTruck.type='text';
@@ -49,7 +50,7 @@ const ProfileOperator = (props) => {
 
             const onEdit = () =>{
                 axiosWithAuth()
-                .put(`https://foodtruck-tracker.herokuapp.com/operators/${props.id}/trucks/${item.id}`, newTruck)
+                .put(`https://foodtruck-tracker.herokuapp.com/operators/${props.id}/trucks/${truckName.id}`, newTruck)
                 .then(res => console.log(res))
                 .catch(err => console.log(err))
             }
