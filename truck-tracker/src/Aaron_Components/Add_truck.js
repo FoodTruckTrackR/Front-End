@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import AddMenuComp from './Add_menu';
 import { Route, Link } from 'react-router-dom';
 import styled from 'styled-components';
+import axios from 'axios';
 
 const StyledDiv = styled.div`
     display: flex;
@@ -57,6 +58,9 @@ const AddTruckComp = () => {
 
     const truckSubmit = event => {
         event.preventDefault();
+        axios.post('https://reqres.in/api/users', truckState)
+        .then(response => console.log(response.data))
+        .catch(error => console.log(error))
         setTruckState({
         truckName: '',
         cuisineType: '',
