@@ -3,6 +3,7 @@ import axiosWithAuth from './axiosWithAuth';
 import {connect} from 'react-redux';
 import {actionLogin} from './Action';
 import Add_truck from './Add_truck';
+import CustomerSurvey from './CustomerSurvey'
 
 const ProfileOperator = (props) => {
     console.log("profile", props)
@@ -67,6 +68,7 @@ const ProfileOperator = (props) => {
                     <div>
                     <button onClick={onDelete(item)}>Delete</button>
                     <button onClick={onUpdate}>Update</button>
+                    <CustomerSurvey item={item} />
                     </div>
                     </div>
                 )
