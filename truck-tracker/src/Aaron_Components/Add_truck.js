@@ -59,7 +59,7 @@ const AddTruckComp = () => {
     const truckSubmit = event => {
         event.preventDefault();
         axios.post('https://reqres.in/api/users', truckState)
-        .then(response => console.log(response.data))
+        .then(response => console.log(response))
         .catch(error => console.log(error))
         setTruckState({
         truckName: '',
@@ -111,7 +111,7 @@ const AddTruckComp = () => {
                 </label>
                 <button type='submit'>Submit truck</button>
                 <Link to='/menu'>Add an item to your truck menu here!</Link>
-                <Route path='/menu' render={(props) => <AddMenuComp {...props} menuChange={menuChange} menuSubmit={menuSubmit} itemName={menuItem.itemName} itemDescription={menuItem.itemDescription} itemPrice={menuItem.itemDescription} />} />
+                <Route path='/menu' render={(props) => <AddMenuComp {...props} menuChange={menuChange} menuSubmit={menuSubmit} itemName={menuItem.itemName} itemDescription={menuItem.itemDescription} itemPrice={menuItem.itemPrice} />} />
             </StyledForm>
         </StyledDiv>
     )
